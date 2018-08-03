@@ -40,8 +40,8 @@ module.exports = NodeHelper.create({
 	   console.log(gasset);  
 	    //[ { name: '1. Kwik Fill #372. Express Mart #3533. Byrne Dairy #664. Express Mart #3225. Sues Pine Valley Busymart6. Speedway #7749 (discount Available)7. Express Mart #3708. Byrne Dairy #19. Dandy Mini Mart #6310. 7-eleven #35122',
     //ppg: '$3.099$2.959$2.949$2.959$3.349$3.159$2.959$2.949$2.959$3.099',
-    //dist: '1.68 miles2.09 miles2.23 miles2.49 miles2.76 miles2.92 miles3.09 miles3.31 miles4.25 miles4.36 miles' },
-      
+    //dist: '1.68 miles2.21 miles2.23 miles2.49 miles2.76 miles2.92 miles3.09 miles3.31 miles4.25 miles4.36 miles' },
+    // instead of [{name: '1. Kwik Fill #372'  ppg: '$3.09', dist: '1.68 miles'}{ {name: '2. Express Mart #3533'  ppg: '$2.959', dist: '2.21 miles'} etc]
 	   self.sendSocketNotification("GAS_RESULT", gasset);
       })
      .catch((err) => {
