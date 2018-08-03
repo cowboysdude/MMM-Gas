@@ -1,0 +1,126 @@
+Entire page is here ->  https://www.autoblog.com/14845-gas-prices/
+
+<div id="gas_prices" class="panel-body">
+									<div class="stations-list">
+										<table>
+											<thead>
+												<tr>
+													<td class="name">Name</td>
+													<td class="ppg">PPG</td>
+													<td class="dist">Distance</td>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+														<td class="name">
+															<a href="https://www.mapquest.com/?le=t&amp;maptype=map&amp;vs=directions&amp;q=119 N Main St%20Horseheads,%20NY" class="name">1. Kwik Fill #37</a>
+														</td>
+														<td class="ppg">
+															<a href="https://www.mapquest.com/?le=t&amp;maptype=map&amp;vs=directions&amp;q=119 N Main St%20Horseheads,%20NY" class="name">$3.099</a>
+														</td>
+														<td class="dist">
+															<a href="https://www.mapquest.com/?le=t&amp;maptype=map&amp;vs=directions&amp;q=119 N Main St%20Horseheads,%20NY" class="name">1.68 miles</a>
+														</td>
+													</tr>
+												<tr>
+														<td class="name">
+															<a href="https://www.mapquest.com/?le=t&amp;maptype=map&amp;vs=directions&amp;q=606 S Main St%20Horseheads,%20NY" class="name">2. Express Mart #353</a>
+														</td>
+														<td class="ppg">
+															<a href="https://www.mapquest.com/?le=t&amp;maptype=map&amp;vs=directions&amp;q=606 S Main St%20Horseheads,%20NY" class="name">$2.959</a>
+														</td>
+														<td class="dist">
+															<a href="https://www.mapquest.com/?le=t&amp;maptype=map&amp;vs=directions&amp;q=606 S Main St%20Horseheads,%20NY" class="name">2.09 miles</a>
+														</td>
+													</tr>
+												<tr>
+														<td class="name">
+															<a href="https://www.mapquest.com/?le=t&amp;maptype=map&amp;vs=directions&amp;q=482 Old Ithaca Rd%20Horseheads,%20NY" class="name">3. Byrne Dairy #66</a>
+														</td>
+														<td class="ppg">
+															<a href="https://www.mapquest.com/?le=t&amp;maptype=map&amp;vs=directions&amp;q=482 Old Ithaca Rd%20Horseheads,%20NY" class="name">$2.949</a>
+														</td>
+														<td class="dist">
+															<a href="https://www.mapquest.com/?le=t&amp;maptype=map&amp;vs=directions&amp;q=482 Old Ithaca Rd%20Horseheads,%20NY" class="name">2.23 miles</a>
+														</td>
+													</tr>
+												<tr>
+														<td class="name">
+															<a href="https://www.mapquest.com/?le=t&amp;maptype=map&amp;vs=directions&amp;q=2150 Grand Central Ave%20Horseheads,%20NY" class="name">4. Express Mart #322</a>
+														</td>
+														<td class="ppg">
+															<a href="https://www.mapquest.com/?le=t&amp;maptype=map&amp;vs=directions&amp;q=2150 Grand Central Ave%20Horseheads,%20NY" class="name">$2.959</a>
+														</td>
+														<td class="dist">
+															<a href="https://www.mapquest.com/?le=t&amp;maptype=map&amp;vs=directions&amp;q=2150 Grand Central Ave%20Horseheads,%20NY" class="name">2.49 miles</a>
+														</td>
+													</tr>
+												<tr>
+														<td class="name">
+															<a href="https://www.mapquest.com/?le=t&amp;maptype=map&amp;vs=directions&amp;q=4520 Watkins Rd%20Pine Valley,%20NY" class="name">5. Sues Pine Valley Busymart</a>
+														</td>
+														<td class="ppg">
+															<a href="https://www.mapquest.com/?le=t&amp;maptype=map&amp;vs=directions&amp;q=4520 Watkins Rd%20Pine Valley,%20NY" class="name">$3.099</a>
+														</td>
+														<td class="dist">
+															<a href="https://www.mapquest.com/?le=t&amp;maptype=map&amp;vs=directions&amp;q=4520 Watkins Rd%20Pine Valley,%20NY" class="name">2.76 miles</a>
+														</td>
+													</tr>
+												<tr>
+														<td class="name">
+															<a href="https://www.mapquest.com/?le=t&amp;maptype=map&amp;vs=directions&amp;q=2457 Corning Rd%20Elmira,%20NY" class="name">6. Speedway #7749 (discount Available)</a>
+														</td>
+														<td class="ppg">
+															<a href="https://www.mapquest.com/?le=t&amp;maptype=map&amp;vs=directions&amp;q=2457 Corning Rd%20Elmira,%20NY" class="name">$3.159</a>
+														</td>
+														<td class="dist">
+															<a href="https://www.mapquest.com/?le=t&amp;maptype=map&amp;vs=directions&amp;q=2457 Corning Rd%20Elmira,%20NY" class="name">2.92 miles</a>
+														</td>
+													</tr>
+												<tr>
+														<td class="name">
+															<a href="https://www.mapquest.com/?le=t&amp;maptype=map&amp;vs=directions&amp;q=3301 Chambers Rd%20Horseheads,%20NY" class="name">7. Express Mart #370</a>
+														</td>
+														<td class="ppg">
+															<a href="https://www.mapquest.com/?le=t&amp;maptype=map&amp;vs=directions&amp;q=3301 Chambers Rd%20Horseheads,%20NY" class="name">$2.959</a>
+														</td>
+														<td class="dist">
+															<a href="https://www.mapquest.com/?le=t&amp;maptype=map&amp;vs=directions&amp;q=3301 Chambers Rd%20Horseheads,%20NY" class="name">3.09 miles</a>
+														</td>
+													</tr>
+												<tr>
+														<td class="name">
+															<a href="https://www.mapquest.com/?le=t&amp;maptype=map&amp;vs=directions&amp;q=1968 Grand Central Ave%20Horseheads,%20NY" class="name">8. Byrne Dairy #1</a>
+														</td>
+														<td class="ppg">
+															<a href="https://www.mapquest.com/?le=t&amp;maptype=map&amp;vs=directions&amp;q=1968 Grand Central Ave%20Horseheads,%20NY" class="name">$2.949</a>
+														</td>
+														<td class="dist">
+															<a href="https://www.mapquest.com/?le=t&amp;maptype=map&amp;vs=directions&amp;q=1968 Grand Central Ave%20Horseheads,%20NY" class="name">3.31 miles</a>
+														</td>
+													</tr>
+												<tr>
+														<td class="name">
+															<a href="https://www.mapquest.com/?le=t&amp;maptype=map&amp;vs=directions&amp;q=3054 Lake Rd%20Horseheads,%20NY" class="name">9. Quick Stop</a>
+														</td>
+														<td class="ppg">
+															<a href="https://www.mapquest.com/?le=t&amp;maptype=map&amp;vs=directions&amp;q=3054 Lake Rd%20Horseheads,%20NY" class="name">$3.149</a>
+														</td>
+														<td class="dist">
+															<a href="https://www.mapquest.com/?le=t&amp;maptype=map&amp;vs=directions&amp;q=3054 Lake Rd%20Horseheads,%20NY" class="name">3.93 miles</a>
+														</td>
+													</tr>
+												<tr>
+														<td class="name">
+															<a href="https://www.mapquest.com/?le=t&amp;maptype=map&amp;vs=directions&amp;q=1769 Grand Central Ave%20Elmira,%20NY" class="name">10. Dandy Mini Mart #63</a>
+														</td>
+														<td class="ppg">
+															<a href="https://www.mapquest.com/?le=t&amp;maptype=map&amp;vs=directions&amp;q=1769 Grand Central Ave%20Elmira,%20NY" class="name">$2.959</a>
+														</td>
+														<td class="dist">
+															<a href="https://www.mapquest.com/?le=t&amp;maptype=map&amp;vs=directions&amp;q=1769 Grand Central Ave%20Elmira,%20NY" class="name">4.25 miles</a>
+														</td>
+													</tr>
+												</tbody>
+										</table>
+									</div>

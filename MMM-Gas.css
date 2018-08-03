@@ -1,0 +1,17 @@
+.MMM-Gas .Gas-flake {
+    position: absolute;
+    top: -20px;
+    animation-name: Gas-drop;
+    animation-iteration-count: infinite;
+}
+
+.MMM-Gas .Gas-flake div {
+    width: 20px;
+    height: 20px;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    animation-name: Gas-jiggle;
+    animation-iteration-count: infinite;
+}
