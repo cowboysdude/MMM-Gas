@@ -5,9 +5,14 @@
     * 
     */
 const NodeHelper = require('node_helper');	
-let axios = require('axios');
-let cheerio = require('cheerio');
-let fs = require('fs'); 
+const rp = require('request-promise');
+const cheerio = require('cheerio');
+const options = {
+  uri: `https://www.autoblog.com/14845-gas-prices/`,
+  transform: function (body) {
+    return cheerio.load(body);
+  }
+}; 
  
 module.exports = NodeHelper.create({
 	  
@@ -16,25 +21,26 @@ module.exports = NodeHelper.create({
     },
     
     getGAS: function(url) {
-axios.get('https://www.autoblog.com/14845-gas-prices/')
-    .then((response) => {
-        if(response.status === 200) {
-			console.log("Working");
-            const html = response.data;
-            const $ = cheerio.load(html);
-		//console.log(html);	
-            let gasList = [];
-            $('stations-list').each(function(i, elem) {
-				console.log("Gas Prices");
-                devtoList[i] = {
-                    station: $(this).find('name').text().trim(),
-              
-                }  
-console.log(station);
-				console.log("last test");	
-            });
-    }
-}, (error) => console.log(err) );
+		var self=this;
+    rp(options)
+     .then(($) => {
+	  let gasset = [];
+        
+	  $('.stations-list').each(function(i, elem) {
+	   gasset[i] = {}
+	   gasset[i]['name']= $('.name').children('a').text(),
+	   gasset[i]['ppg']= $('.ppg').children('a').text(),
+	   gasset[i]['dist']= $('.dist').children('a').text(),
+	   gasset.push({name: gasset[i]['name'], ppg: gasset[i]['ppg'], dist: gasset[i]['dist']});
+	   // console.log(gasset[i]);
+		});
+		
+       console.log(gasset);
+	   self.sendSocketNotification("GAS_RESULT", gasset);
+      })
+     .catch((err) => {
+    console.log(err);
+  });
 	},
     socketNotificationReceived: function(notification, payload) {
         if (notification === 'GET_GAS') {
