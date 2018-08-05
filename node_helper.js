@@ -15,32 +15,34 @@ module.exports = NodeHelper.create({
         console.log("Starting module: " + this.name);
     },
 
-    getGAS: function(url) {
-        var self = this;
-        request("https://www.autoblog.com/" + this.config.zip + "-gas-prices/", function(error, response, body) {
+    getGAS: function() {
+        request("https://www.autoblog.com/" + this.config.zip + "-gas-prices/", (error, response, body) => {
             if (!error && response.statusCode == 200) {
-                var $ = cheerio.load(body);
+                const $ = cheerio.load(body);
 
-                let gasset = [];
+                const gasset = [];
 
-                $('.stations-list tr').each(function(i, elem) {
-                    gaslist = {
-                        name: $(elem).find('td .name').text().replace(/\$.*/, ''),
+                $('.stations-list tbody tr').each(function(i, elem) {
+                    const href = decodeURI($(elem).find('.name a').attr('href')).split('=');
+                    const address = href[href.length - 1];
+
+                    const gaslist = {
+                        name: $(elem).find('td .name').text().replace(/\$.*/, ""),
                         ppg: $(elem).find('.ppg').text().replace(/[\n\t\r]/g, ""),
-                        dist: $(elem).find('.dist').text().replace(/[\n\t\r]/g, "")
+                        dist: $(elem).find('.dist').text().replace(/[\n\t\r]/g, ""),
+                        address,
                     };
-                   
-                    gasset.push(gaslist);
 
+                    gasset.push(gaslist);
                 });
-                
-                self.sendSocketNotification("GAS_RESULT", gasset);
+
+                this.sendSocketNotification("GAS_RESULT", gasset);
             }
         });
     },
     socketNotificationReceived: function(notification, payload) {
         if (notification === 'GET_GAS') {
-            this.getGAS(payload);
+            this.getGAS();
         }
         if (notification === 'CONFIG') {
             this.config = payload;
