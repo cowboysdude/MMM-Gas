@@ -29,7 +29,7 @@ https://github.com/fewieden/MMM-Fuel
 
 Here's a link to a video to show the address via mouseover effect
 
-https://www.youtube.com/watch?v=D8mITcVncps
-
+ 
+[![Address via mouseover](https://i9.ytimg.com/vi/D8mITcVncps/default.jpg?sqp=CISPrtsF&rs=AOn4CLBJNhPf5b6N6L0e_MgPnhXeiB8t_g)](https://www.youtube.com/watch?v=D8mITcVncps)
 
 
