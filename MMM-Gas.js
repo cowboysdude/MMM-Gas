@@ -7,7 +7,7 @@
 Module.register("MMM-Gas", {
 
     defaults: {
-        updateInterval: 12 * 60 * 1000,
+        updateInterval: 12 * 60 * 60 * 1000,
         zip: "14904",
         items: "10"
     },
@@ -15,6 +15,9 @@ Module.register("MMM-Gas", {
     getStyles: function() {
         return ["MMM-Gas.css"]
     },
+	getScripts: function(){
+		return ["moment.js"]
+	},
 
     // Define start sequence.
     start: function() {
@@ -23,7 +26,7 @@ Module.register("MMM-Gas", {
         this.loaded = true;
         this.getGAS();
         this.gas = {};
-        this.info = {};
+        this.scheduleUpdate();
     },
 
     getDom: function() {
@@ -102,7 +105,21 @@ Module.register("MMM-Gas", {
 
             top.appendChild(weatherTable);
             wrapper.appendChild(top);
-        }
+			}
+			
+            var doutput = moment().format("M.D.YYYY");
+            var tinput = document.lastModified;
+            var toutput = (moment(tinput.substring(10, 16), 'HH:mm').format('h:mm a'));
+		    var x = this.config.updateInterval;
+		    var y = moment.utc(x).format('mm');
+        
+		var mod = document.createElement("div");
+        mod.classList.add("xsmall");
+		mod.setAttribute('style','text-align: center;');
+        mod.innerHTML = "<font color=yellow>[</font>Updated: " +  doutput + " @ "+  toutput+"<font color=yellow>]</font>";
+        wrapper.appendChild(mod);
+			
+       
         return wrapper;
 
     },
@@ -112,16 +129,10 @@ Module.register("MMM-Gas", {
         this.gas = data;
     },
 
-    setInterval: function() {
-        var hour = new Date().getHours();
-        if (hour >= 23 && hour < 2) {
-            this.scheduleUpdate();
-        }
-    },
-
     scheduleUpdate: function() {
-        this.setInterval(() => {
+        setInterval(() => {
             this.getGAS();
+			console.log("Updating Gas Prices");
         }, this.config.updateInterval);
 
         this.getGAS(this.config.initialLoadDelay);
