@@ -6,16 +6,19 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "cowboysdude",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.18.0",
     "cheerio": "^1.0.0-rc.2",
-    "cheerio-tableparser": "^1.0.1",
-    "fs": "0.0.1-security",
-    "jsonframe-cheerio": "^3.0.1",
-    "request": "^2.87.0",
-    "request-promise": "^4.2.2"
+    "request": "^2.87.0"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cowboysdude/MMM-GAS.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cowboysdude/MMM-GAS/issues"
+  },
+  "homepage": "https://github.com/cowboysdude/MMM-GAS#readme"
 }

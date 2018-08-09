@@ -1,114 +1,131 @@
 /* Magic Mirror
  * Module: MMM-Gas
  *
- * By Michael Teeuw http://michaelteeuw.nl
- * MIT Licensed.
+ * 
+ * Cowboysdude
  */
 
 Module.register("MMM-Gas",{
 
-    defaults: {
-        updateInterval: 24 * 60 * 1000,
-        showAddress: true,
-        zip: "14904"
-    },
+	defaults: {
+		updateInterval: 12 * 60 * 1000,
+		zip: "14904",
+		items: "10"
+	},
 
-    getStyles: function() {
-        return [ "MMM-Gas.css" ]
-    },
-
-    
+	getStyles: function() {
+		return [ "MMM-Gas.css" ]
+	},
+	
     // Define start sequence.
     start: function() {
         Log.info("Starting module: " + this.name);
-        this.loaded = false;
-        this.sendSocketNotification('CONFIG', this.config);
-        this.getGAS();
-    },
-
-    scheduleCarousel: function() {
-        console.log("Scheduling items");
-        this.updateDom(this.config.animationSpeed);
+		this.sendSocketNotification('CONFIG', this.config);
+        this.loaded = true;
+		this.getGAS();
+		this.gas = {};
+		this.info = {};
     },
 
     getDom: function() {
-        var wrapper = document.createElement("div");
+		
+		 var wrapper = document.createElement("div");
+		
+		var info = this.info;
+	 	var today = new Date();
+		var date = (today.getMonth()+1)+'-'+today.getDate()+'-'+today.getFullYear();
+		
+		var top = document.createElement("div");
+		top.classList.add("xsmall", "float");
+		top.innerHTML = "<u>Gas Prices for "+date+"</u>";
+        wrapper.appendChild(top);
+		 
+		var weatherTable = document.createElement("table");
+        weatherTable.classList.add("table");
 
-        if(!this.loaded) {
-            wrapper.innerHTML = this.translate("LOADING");
-            return wrapper;
-        }
+	   var xFCRow = document.createElement("tr");
+	   var xjumpy = document.createElement("th");
+	   xjumpy.setAttribute("style", "text-align:center");
+	    xjumpy.classList.add("xsmall");
+	   xjumpy.innerHTML = "Station";
+	   xFCRow.appendChild(xjumpy);
+	   weatherTable.appendChild(xFCRow);	
 
-        var table = document.createElement("table");
-        table.classList.add("small");
+       var ajumpy = document.createElement("th");
+	   ajumpy.setAttribute("style", "text-align:center");
+	    ajumpy.classList.add("xsmall");
+	   ajumpy.innerHTML = "Price";
+	   xFCRow.appendChild(ajumpy);
+	   weatherTable.appendChild(xFCRow);
+	   
+	   
+	    
+	   var bjumpy = document.createElement("th");
+	   bjumpy.setAttribute("style", "text-align:center");
+	    bjumpy.classList.add("xsmall");
+	   bjumpy.innerHTML = "Distance";
+	   xFCRow.appendChild(bjumpy);
+	   weatherTable.appendChild(xFCRow);
 
-        var thead = document.createElement("thead");
-        var headerRow = document.createElement("tr");
+	   			
+				var gas = this.gas;
+				
+				
+        for (i = 0; i < this.gas.length; i++) {
+		var gas = this.gas[i];
+				
+                var name = gas.name.replace(/\#.*/, '');
+				var store = name.replace(/\(.*/, '');
+				var storeslist = store.replace(/^[^.]+\./, "");
+				var ans = store.replace(/\Convenience.*/, 'Conv.');
+				var ppg = gas.ppg.slice(1, 5);
+				var dist = gas.dist;
+				
+				
+		var TDrow = document.createElement("tr");
+        TDrow.classList.add("xsmall", "bright");
 
-        var nameHeader = document.createElement("th");
-        nameHeader.innerHTML = "Name";
-        headerRow.appendChild(nameHeader);
+        var td2 = document.createElement("td");
+		td2.classList.add("align","CellWithComment");
+        td2.innerHTML = storeslist+"<span class='CellComment'><u><font color=#F0F8FF><b>"+storeslist+"</font></b></u><BR><BR>"+gas.address+"</span>";
+        TDrow.appendChild(td2);
+        weatherTable.appendChild(TDrow);
 
-        var ppgHeader = document.createElement("th");
-        ppgHeader.innerHTML = "PPG";
-        headerRow.appendChild(ppgHeader);
+        var td3 = document.createElement("td");
+        td3.innerHTML = "$"+ppg;
+        TDrow.appendChild(td3);
+        weatherTable.appendChild(TDrow);
 
-        var distHeader = document.createElement("th");
-        distHeader.innerHTML = "Distance";
-        headerRow.appendChild(distHeader);
+        var td5 = document.createElement("td");
+        td5.innerHTML = dist;
+        TDrow.appendChild(td5);
+        weatherTable.appendChild(TDrow);
 
-        thead.appendChild(headerRow);
-        table.appendChild(thead);
-
-        var tbody = document.createElement("tbody");
-
-        for(var i = 0; i < this.gas.length; i++) {
-            var row = document.createElement("tr");
-
-            var name = document.createElement("td");
-            name.innerHTML = this.gas[i].name;
-            row.appendChild(name);
-
-            var ppg = document.createElement("td");
-            ppg.innerHTML = this.gas[i].ppg;
-            row.appendChild(ppg);
-
-            var dist = document.createElement("td");
-            dist.innerHTML = this.gas[i].dist;
-            row.appendChild(dist);
-
-            tbody.appendChild(row);
-
-            if (this.config.showAddress) {
-                var addressRow = document.createElement("tr");
-                addressRow.classList.add("xsmall");
-
-                var address = document.createElement("td");
-                address.setAttribute("colspan", 3);
-                address.innerHTML = this.gas[i].address;
-                addressRow.appendChild(address);
-
-                tbody.appendChild(addressRow);
-            }
-        }
-
-        table.appendChild(tbody);
-        wrapper.appendChild(table);
-
+        top.appendChild(weatherTable);
+        wrapper.appendChild(top);
+		}    
         return wrapper;
+       
     },
 
     processGAS: function(data) {
+        this.today = data.Today;
         this.gas = data;
-        this.loaded = true;
     },
+	
+	setInterval: function(){ 
+    var hour = new Date().getHours();
+    if (hour >= 23 && hour < 2) {
+         this.scheduleUpdate(); 
+    }
+} , 
 
     scheduleUpdate: function() {
-        setInterval(() => {
+        this.setInterval(() => {
             this.getGAS();
         }, this.config.updateInterval);
 
-        this.getGAS();
+        this.getGAS(this.config.initialLoadDelay);
     },
 
     getGAS: function() {
@@ -118,8 +135,8 @@ Module.register("MMM-Gas",{
     socketNotificationReceived: function(notification, payload) {
         if (notification === "GAS_RESULT") {
             this.processGAS(payload);
+		}
             this.updateDom();
-        }
     }
 
 });
