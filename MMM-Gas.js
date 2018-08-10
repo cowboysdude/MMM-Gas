@@ -11,6 +11,15 @@ Module.register("MMM-Gas", {
         zip: "14904",
         items: "10"
     },
+	
+    voice: {
+        mode: 'GAS',
+        sentences: [
+            'OPEN HELP',
+            'CLOSE HELP',
+            'SHOW GAS' 
+        ]
+    },
 
     getStyles: function() {
         return ["MMM-Gas.css"]
@@ -138,6 +147,18 @@ Module.register("MMM-Gas", {
     getGAS: function() {
         this.sendSocketNotification('GET_GAS');
     },
+	
+     notificationReceived(notification, payload, sender) {
+        if (notification === 'ALL_MODULES_STARTED') {
+            this.sendNotification('REGISTER_VOICE_MODULE', this.voice);
+        } else if (notification === 'VOICE_GAS' && sender.name === 'MMM-voice') {
+            this.checkCommands(payload);
+        } else if (notification === 'VOICE_MODE_CHANGED' && sender.name === 'MMM-voice' && payload.old === this.voice.mode) {
+            this.help = false; 
+            this.updateDom(300);
+        }
+    },
+
 
     socketNotificationReceived: function(notification, payload) {
         if (notification === "GAS_RESULT") {
