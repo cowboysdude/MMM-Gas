@@ -38,9 +38,6 @@ Module.register("MMM-Gas", {
         var date = (today.getMonth() + 1) + '-' + today.getDate() + '-' + today.getFullYear();
 
         var top = document.createElement("div");
-        top.classList.add("xsmall", "float");
-        top.innerHTML = "Gas Prices for " + date + " for " + this.config.zip;
-        wrapper.appendChild(top);
 
         var weatherTable = document.createElement("table");
         weatherTable.classList.add("table");
@@ -88,7 +85,7 @@ Module.register("MMM-Gas", {
             TDrow.classList.add("xsmall", "bright");
 
             var td2 = document.createElement("td");
-            td2.classList.add("align", "CellWithComment");
+            td2.classList.add("align", "CellWithComment","yellow");
             td2.innerHTML = storeslist + "<span class='CellComment'><u><font color=#F0F8FF><b>" + storeslist + "</font></b></u><BR><BR>" + gas.address + "</span>";
             TDrow.appendChild(td2);
             weatherTable.appendChild(TDrow);
@@ -114,7 +111,7 @@ Module.register("MMM-Gas", {
 		    var y = moment.utc(x).format('mm');
         
 		var mod = document.createElement("div");
-        mod.classList.add("xsmall");
+        mod.classList.add("xxsmall","green");
 		mod.setAttribute('style','text-align: center;');
         mod.innerHTML = "<font color=yellow>[</font>Updated: " +  doutput + " @ "+  toutput+"<font color=yellow>]</font>";
         wrapper.appendChild(mod);
