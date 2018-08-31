@@ -88,14 +88,14 @@ Module.register("MMM-Gas", {
             var ans = store.replace(/\Convenience.*/, 'Conv.');
             var ppg = gas.ppg.slice(1, 5);
             var dist = gas.dist;
-
+            var up = gas.updated;
 
             var TDrow = document.createElement("tr");
             TDrow.classList.add("xsmall", "bright");
 
             var td2 = document.createElement("td");
             td2.classList.add("align", "CellWithComment","yellow");
-            td2.innerHTML = storeslist + "<span class='CellComment'><u><font color=#F0F8FF><b>" + storeslist + "</font></b></u><BR><BR>" + gas.address + "</span>";
+            td2.innerHTML = storeslist + "<span class='CellComment'><u><font color=#F0F8FF><b>" + storeslist + "</font></b></u><BR><BR>" + gas.address + "<br> Updated: "+up+"</span>";
             TDrow.appendChild(td2);
             weatherTable.appendChild(TDrow);
 
