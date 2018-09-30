@@ -25,13 +25,13 @@ module.exports = NodeHelper.create({
                         ppg: $(elem).find('.price').text().match(/^\$(([1-9]\d*)?\d)(\.\d{2})/g)[0],
                         dist: $(elem).find('.dist').text().replace(/[\n\t\r]/g, ""),
                         address: $(elem).find('.name address').text(),
-												updated: $(elem).find('.time').text(),
+                        updated: $(elem).find('.time').text(),
                     };
                     gasset.push(gaslist);
                 });
-								if(this.config.sortBy == 'price') {
-										gasset.sort((a,b) => eval(a.ppg.slice(1)) - eval(b.ppg.slice(1)) );
-								}
+                if(this.config.sortBy == 'price') {
+                    gasset.sort((a,b) => eval(a.ppg.slice(1)) - eval(b.ppg.slice(1)) );
+                }
                 this.sendSocketNotification("GAS_RESULT", gasset);
             }
         });

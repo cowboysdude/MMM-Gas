@@ -10,8 +10,8 @@ Module.register("MMM-Gas", {
         updateInterval: 12 * 60 * 60 * 1000,
         zip: "14904",
         items: 10,
-				typeGas: "",				//premium, mid-grade, diesel, or blank for regular
-				sortBy: "distance"	//distance, price
+        typeGas: "",				//premium, mid-grade, diesel, or blank for regular
+        sortBy: "distance"	//distance, price
     },
 	
     voice: {
