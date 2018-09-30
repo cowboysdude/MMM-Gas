@@ -9,7 +9,9 @@ Module.register("MMM-Gas", {
     defaults: {
         updateInterval: 12 * 60 * 60 * 1000,
         zip: "14904",
-        items: "10"
+        items: 10,
+        typeGas: "",				//premium, mid-grade, diesel, or blank for regular
+        sortBy: "distance"	//distance, price
     },
 	
     voice: {
@@ -79,7 +81,7 @@ Module.register("MMM-Gas", {
         var gas = this.gas;
 
 
-        for (i = 0; i < this.gas.length; i++) {
+        for (i = 0; i < Math.min(this.gas.length, this.config.items); i++) {
             var gas = this.gas[i];
 
             var name = gas.name.replace(/\#.*/, '');

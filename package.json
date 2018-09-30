@@ -1,6 +1,6 @@
 {
   "name": "mmm-gas",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Inspired by [NHubbard's Snow Plugin](https://github.com/nhubbard/MagicPlugins/tree/master/snow) I created a little more realistic snow plugin to improve your winter experience!",
   "main": "MMM-Gas.js",
   "scripts": {
