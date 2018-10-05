@@ -11,7 +11,8 @@ Module.register("MMM-Gas", {
         zip: "14904",
         items: 10,
         typeGas: "",				//premium, mid-grade, diesel, or blank for regular
-        sortBy: "distance"	//distance, price
+        sortBy: "distance",	//distance, price
+		distance: true
     },
 	
     voice: {
@@ -24,7 +25,11 @@ Module.register("MMM-Gas", {
     },
 
     getStyles: function() {
-        return ["MMM-Gas.css"]
+        if (this.config.distance != false){ 
+		return ["MMM-Gas.css"]
+        } else { 
+		return  ["MMM-Gas1.css"]
+		}		
     },
 	getScripts: function(){
 		return ["moment.js"]
@@ -69,14 +74,14 @@ Module.register("MMM-Gas", {
         weatherTable.appendChild(xFCRow);
 
 
-
+        if (this.config.distance != false){
         var bjumpy = document.createElement("th");
         bjumpy.setAttribute("style", "text-align:center");
         bjumpy.classList.add("xsmall");
         bjumpy.innerHTML = "Distance";
         xFCRow.appendChild(bjumpy);
         weatherTable.appendChild(xFCRow);
-
+        }
 
         var gas = this.gas;
 
@@ -106,26 +111,28 @@ Module.register("MMM-Gas", {
             TDrow.appendChild(td3);
             weatherTable.appendChild(TDrow);
 
-            var td5 = document.createElement("td");
+            if (this.config.distance != false){
+			var td5 = document.createElement("td");
             td5.innerHTML = dist;
             TDrow.appendChild(td5);
             weatherTable.appendChild(TDrow);
+			}
 
             top.appendChild(weatherTable);
             wrapper.appendChild(top);
 			}
 			
-            var doutput = moment().format("M.D.YYYY");
-            var tinput = document.lastModified;
-            var toutput = (moment(tinput.substring(10, 16), 'HH:mm').format('h:mm a'));
-		    var x = this.config.updateInterval;
-		    var y = moment.utc(x).format('mm');
+            //var doutput = moment().format("M.D.YYYY");
+            //var tinput = document.lastModified;
+            //var toutput = (moment(tinput.substring(10, 16), 'HH:mm').format('h:mm a'));
+		    //var x = this.config.updateInterval;
+		    //var y = moment.utc(x).format('mm');
         
-		var mod = document.createElement("div");
-        mod.classList.add("xxsmall","green");
-		mod.setAttribute('style','text-align: center;');
-        mod.innerHTML = "<font color=yellow>[</font>Updated: " +  doutput + " @ "+  toutput+"<font color=yellow>]</font>";
-        wrapper.appendChild(mod);
+		//var mod = document.createElement("div");
+        //mod.classList.add("xxsmall","green");
+		//mod.setAttribute('style','text-align: center;');
+        //mod.innerHTML = "<font color=yellow>[</font>Updated: " +  doutput + " @ "+  toutput+"<font color=yellow>]</font>";
+        //wrapper.appendChild(mod);
 			
        
         return wrapper;
