@@ -1,0 +1,73 @@
+
+
+.MMM-Gas .table {
+    position: relative;
+    left: 20px;
+	z-index: 1;
+	width: 60%;
+}
+.MMM-Gas .td {
+	width: 35px;
+	padding: 0 10px 0 10px;
+}
+.MMM-Gas tr, th {
+	position: relative;
+    padding: 5px;
+    text-align: center;
+}
+.MMM-Gas .xxsmall{
+	font-size: 12px;
+}
+.MMM-Gas .green {
+	color: #B4F7E5;
+}
+.MMM-Gas .yellow {
+	color: #FCFEC1;
+}
+.MMM-Gas .align {
+	position: relative;
+	text-align: left;
+	width: 50%;
+	margin: 4px;
+}
+.MMM-Gas .float {
+	text-align: center;
+	margin-bottom: 10px;
+	display: inline-block;
+	float: left;
+}
+
+.MMM-Gas  .tooltip {
+    position: relative;
+    display: inline-block;
+	float: left;
+}
+.MMM-Gas .CellWithComment{
+  position:relative;
+  z-index: 1;
+}
+.MMM-Gas .CellComment{
+  width: 110%;
+  line-height: 14px;
+  display:none;
+  float: center;
+  box-shadow: 0px 0px 0px 2px #888888;
+  height: auto;
+  z-index:100;
+  background-color:#080808;
+  border-style:solid;
+  border-width:1px;
+  border-color:#a4d4ff;
+  padding: 10px 5px 10px 5px;
+  font-size: 12px;
+  color:#f0f1ff; 
+  position: absolute; right: 0; bottom: 0; 
+  bottom: 15px;
+  text-align: center;
+  border-radius: 5px;
+}
+.MMM-Gas .CellWithComment:hover span.CellComment{
+  display:block;
+}
+
+}
