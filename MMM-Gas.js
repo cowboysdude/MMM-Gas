@@ -1,7 +1,7 @@
 /* Magic Mirror
  * Module: MMM-Gas
  *
- * 
+ *
  * Cowboysdude
  */
 Module.register("MMM-Gas", {
@@ -14,22 +14,21 @@ Module.register("MMM-Gas", {
         sortBy: "distance",	//distance, price
 		distance: true
     },
-	
+
     voice: {
         mode: 'GAS',
         sentences: [
-            'OPEN HELP',
-            'CLOSE HELP',
-            'SHOW GAS' 
+            'HIDE GAS',
+            'SHOW GAS'
         ]
     },
 
     getStyles: function() {
-        if (this.config.distance != false){ 
+        if (this.config.distance != false){
 		return ["MMM-Gas.css"]
-        } else { 
+        } else {
 		return  ["MMM-Gas1.css"]
-		}		
+		}
     },
 	getScripts: function(){
 		return ["moment.js"]
@@ -121,20 +120,20 @@ Module.register("MMM-Gas", {
             top.appendChild(weatherTable);
             wrapper.appendChild(top);
 			}
-			
+
             //var doutput = moment().format("M.D.YYYY");
             //var tinput = document.lastModified;
             //var toutput = (moment(tinput.substring(10, 16), 'HH:mm').format('h:mm a'));
 		    //var x = this.config.updateInterval;
 		    //var y = moment.utc(x).format('mm');
-        
+
 		//var mod = document.createElement("div");
         //mod.classList.add("xxsmall","green");
 		//mod.setAttribute('style','text-align: center;');
         //mod.innerHTML = "<font color=yellow>[</font>Updated: " +  doutput + " @ "+  toutput+"<font color=yellow>]</font>";
         //wrapper.appendChild(mod);
-			
-       
+
+
         return wrapper;
 
     },
@@ -156,14 +155,14 @@ Module.register("MMM-Gas", {
     getGAS: function() {
         this.sendSocketNotification('GET_GAS');
     },
-	
+
      notificationReceived(notification, payload, sender) {
         if (notification === 'ALL_MODULES_STARTED') {
             this.sendNotification('REGISTER_VOICE_MODULE', this.voice);
         } else if (notification === 'VOICE_GAS' && sender.name === 'MMM-voice') {
             this.checkCommands(payload);
         } else if (notification === 'VOICE_MODE_CHANGED' && sender.name === 'MMM-voice' && payload.old === this.voice.mode) {
-            this.help = false; 
+            this.help = false;
             this.updateDom(300);
         }
     },

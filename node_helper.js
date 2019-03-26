@@ -2,7 +2,7 @@
  * Module: MMM-Gas
  *
  * By Cowboysdude
- * 
+ *
  */
 const NodeHelper = require('node_helper');
 const cheerio = require('cheerio');
@@ -22,16 +22,17 @@ module.exports = NodeHelper.create({
                 $('.shop').each(function(i, elem) {
                     const gaslist = {
                         name: $(elem).find('.name h4').text(),
-                        ppg: $(elem).find('.price').text().match(/^\$(([1-9]\d*)?\d)(\.\d{2})/g)[0],
-                        dist: $(elem).find('.dist').text().replace(/[\n\t\r]/g, ""),
+                        dist: $(elem).find('ul .dist').text().replace(/[\n\t\r]/g, ""),
                         address: $(elem).find('.name address').text(),
-                        updated: $(elem).find('.time').text(),
+                        ppg: $(elem).find('li .slab.price .price').text(),
+                        updated: $(elem).find('li .time').text(),
                     };
                     gasset.push(gaslist);
                 });
                 if(this.config.sortBy == 'price') {
                     gasset.sort((a,b) => eval(a.ppg.slice(1)) - eval(b.ppg.slice(1)) );
                 }
+                console.log(gasset);
                 this.sendSocketNotification("GAS_RESULT", gasset);
             }
         });
@@ -39,7 +40,7 @@ module.exports = NodeHelper.create({
     socketNotificationReceived: function(notification, payload) {
         if (notification === 'GET_GAS') {
 			this.getGAS(payload);
-			
+
         }
         if (notification === 'CONFIG') {
             this.config = payload;
