@@ -15,7 +15,13 @@ module.exports = NodeHelper.create({
     },
 
      getGAS: function() {
-        request("https://www.autoblog.com/" + this.config.zip + "-gas-prices/" + this.config.typeGas, (error, response, body) => {
+      if (this.config.typeGas != 'regular') {
+       url = "https://www.autoblog.com/" + this.config.zip + "-gas-prices/" + this.config.typeGas
+     } else {
+       url = "https://www.autoblog.com/" + this.config.zip + "-gas-prices/"
+     }
+        request(
+          url, (error, response, body) => {
             if (!error && response.statusCode == 200) {
                 const $ = cheerio.load(body);
                 const gasset = [];
@@ -32,7 +38,7 @@ module.exports = NodeHelper.create({
                 if(this.config.sortBy == 'price') {
                     gasset.sort((a,b) => eval(a.ppg.slice(1)) - eval(b.ppg.slice(1)) );
                 }
-                console.log(gasset);
+                //console.log(gasset);
                 this.sendSocketNotification("GAS_RESULT", gasset);
             }
         });
