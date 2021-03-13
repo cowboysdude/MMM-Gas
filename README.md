@@ -8,7 +8,7 @@ https://github.com/fewieden/MMM-Fuel
 
 ## Examples
 
-![](Captureme.PNG) 
+![](1.png) 
 
 ## Your terminal installation instructions
 
