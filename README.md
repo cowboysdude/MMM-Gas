@@ -23,8 +23,7 @@ https://github.com/fewieden/MMM-Fuel
         config: { 
 		zip : "14904",
 		typeGas: "mid-grade", //can be "mid-grade", "premium", or "diesel".  Leave blank for regular gas prices
-		sortBy: "price",	//can be "distance" or "price"
-		items: 10,	//number of gas stations to display
+		sortBy: "price",	//can be "distance" or "price"		
 	        distance: false  //to hide distance column
 	     }
        },
