@@ -1,4 +1,4 @@
-# MMM-GAS
+# MMM-Gas
 
 **THIS MODULE WILL ONLY WORK IN THE USA.  It was made specifically for this.**
 There is a module for overseas called MMM-Fuel :)
